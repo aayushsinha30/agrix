@@ -35,3 +35,9 @@ export type CommunityPost = {
   likes: number;
   comments: number;
 };
+
+export type GovtScheme = {
+  name: string;
+  description: string;
+  link: string;
+};

@@ -12,7 +12,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import {
   Activity,
   Banknote,
+  Bug,
   Droplets,
+  Landmark,
   HeartPulse,
   LayoutGrid,
   MessagesSquare,
@@ -21,7 +23,8 @@ import {
 } from 'lucide-react';
 import PricePredictor from './price-predictor';
 import Community from './community';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import PestControl from './pest-control';
+import Schemes from './schemes';
 
 const LandscapeBackground = () => (
   <div
@@ -43,31 +46,6 @@ const LandscapeBackground = () => (
       ></path>
     </svg>
   </div>
-);
-
-const PlaceholderCard = ({
-  title,
-  icon,
-}: {
-  title: string;
-  icon: React.ReactNode;
-}) => (
-  <Card>
-    <CardHeader>
-      <div className="flex items-center gap-3">
-        {icon}
-        <CardTitle>{title}</CardTitle>
-      </div>
-      <CardDescription>
-        This feature is under construction. Check back soon!
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div className="flex items-center justify-center h-32 text-muted-foreground">
-        Coming Soon
-      </div>
-    </CardContent>
-  </Card>
 );
 
 export default function AgrixDashboard() {
@@ -117,36 +95,12 @@ export default function AgrixDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
               <MarketPrices />
               <PricePredictor />
-              <div className="lg:col-span-2">
-                <PlaceholderCard
-                  title="Direct Market Linkage"
-                  icon={<Banknote className="h-6 w-6 text-primary" />}
-                />
-              </div>
             </div>
           </TabsContent>
           <TabsContent value="services">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              <PlaceholderCard
-                title="Precision Irrigation"
-                icon={<Droplets className="h-6 w-6 text-primary" />}
-              />
-              <PlaceholderCard
-                title="Post-Harvest Sorting"
-                icon={<Tractor className="h-6 w-6 text-primary" />}
-              />
-              <PlaceholderCard
-                title="Livestock Management"
-                icon={<HeartPulse className="h-6 w-6 text-primary" />}
-              />
-              <PlaceholderCard
-                title="Smart Insurance & Loans"
-                icon={<ShieldCheck className="h-6 w-6 text-primary" />}
-              />
-              <PlaceholderCard
-                title="Value Addition Support"
-                icon={<Tractor className="h-6 w-6 text-primary" />}
-              />
+              <PestControl />
+              <Schemes />
             </div>
           </TabsContent>
           <TabsContent value="community">

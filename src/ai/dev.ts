@@ -5,3 +5,5 @@ import './flows/suggest-crops-profit.ts';
 import './flows/detect-crop-disease.ts';
 import './flows/predict-market-price.ts';
 import './flows/generate-community-content.ts';
+import './flows/get-pest-control-advice.ts';
+import './flows/get-govt-schemes.ts';

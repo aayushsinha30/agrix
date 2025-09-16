@@ -1,5 +1,9 @@
 import AgrixDashboard from '@/components/agrix/dashboard';
 
 export default function Home() {
-  return <AgrixDashboard />;
+  return (
+    <div className="bg-background">
+      <AgrixDashboard />
+    </div>
+  );
 }
