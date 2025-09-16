@@ -24,6 +24,7 @@ import {
   CookingPot,
   Beef,
   Shield,
+  ShoppingBag,
 } from 'lucide-react';
 import PricePredictor from './price-predictor';
 import Community from './community';
@@ -34,6 +35,7 @@ import PostHarvestSorting from './post-harvest-sorting';
 import LivestockManagement from './livestock-management';
 import SmartInsurance from './smart-insurance';
 import ValueAddition from './value-addition';
+import Shop from './shop';
 
 const LandscapeBackground = () => (
   <div
@@ -72,7 +74,7 @@ export default function AgrixDashboard() {
       <Header />
       <main className="p-4 md:p-6 lg:p-8">
         <Tabs defaultValue="dashboard">
-          <TabsList className="mb-4 grid-cols-4">
+          <TabsList className="mb-4 grid-cols-5">
             <TabsTrigger value="dashboard">
               <LayoutGrid className="mr-2" /> Dashboard
             </TabsTrigger>
@@ -81,6 +83,9 @@ export default function AgrixDashboard() {
             </TabsTrigger>
             <TabsTrigger value="services">
               <Tractor className="mr-2" /> Farm Services
+            </TabsTrigger>
+             <TabsTrigger value="shop">
+              <ShoppingBag className="mr-2" /> Shop
             </TabsTrigger>
             <TabsTrigger value="community">
               <MessagesSquare className="mr-2" /> Community
@@ -116,6 +121,9 @@ export default function AgrixDashboard() {
               <SmartInsurance />
               <ValueAddition />
             </div>
+          </TabsContent>
+           <TabsContent value="shop">
+            <Shop />
           </TabsContent>
           <TabsContent value="community">
             <Community />
