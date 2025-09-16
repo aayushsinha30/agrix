@@ -20,11 +20,20 @@ import {
   MessagesSquare,
   ShieldCheck,
   Tractor,
+  Boxes,
+  CookingPot,
+  Beef,
+  ShieldHalf,
 } from 'lucide-react';
 import PricePredictor from './price-predictor';
 import Community from './community';
 import PestControl from './pest-control';
 import Schemes from './schemes';
+import PrecisionIrrigation from './precision-irrigation';
+import PostHarvestSorting from './post-harvest-sorting';
+import LivestockManagement from './livestock-management';
+import SmartInsurance from './smart-insurance';
+import ValueAddition from './value-addition';
 
 const LandscapeBackground = () => (
   <div
@@ -101,6 +110,11 @@ export default function AgrixDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               <PestControl />
               <Schemes />
+              <PrecisionIrrigation />
+              <PostHarvestSorting />
+              <LivestockManagement />
+              <SmartInsurance />
+              <ValueAddition />
             </div>
           </TabsContent>
           <TabsContent value="community">
