@@ -12,3 +12,4 @@ import './flows/grade-produce.ts';
 import './flows/get-livestock-advice.ts';
 import './flows/assess-crop-damage.ts';
 import './flows/find-farming-supplies.ts';
+import './flows/find-cold-storage.ts';

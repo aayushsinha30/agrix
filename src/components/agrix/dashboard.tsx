@@ -25,6 +25,7 @@ import {
   Beef,
   Shield,
   ShoppingBag,
+  Snowflake,
 } from 'lucide-react';
 import PricePredictor from './price-predictor';
 import Community from './community';
@@ -36,6 +37,7 @@ import LivestockManagement from './livestock-management';
 import SmartInsurance from './smart-insurance';
 import ValueAddition from './value-addition';
 import Shop from './shop';
+import ColdStorageFinder from './cold-storage-finder';
 
 const LandscapeBackground = () => (
   <div
@@ -120,6 +122,7 @@ export default function AgrixDashboard() {
               <LivestockManagement />
               <SmartInsurance />
               <ValueAddition />
+              <ColdStorageFinder />
             </div>
           </TabsContent>
            <TabsContent value="shop">
