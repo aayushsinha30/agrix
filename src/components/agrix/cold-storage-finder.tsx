@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { findColdStorage } from '@/ai/flows/find-cold-storage';
+import { getLocationFromCoords } from '@/ai/flows/get-location-from-coords';
 import type { FindColdStorageOutput } from '@/ai/flows/find-cold-storage.types';
 import {
   Card,
@@ -12,14 +13,62 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { Snowflake, Loader2, Sparkles, MapPin, Phone } from 'lucide-react';
+import {
+  Snowflake,
+  Loader2,
+  Sparkles,
+  MapPin,
+  Phone,
+  Crosshair,
+} from 'lucide-react';
 import { Badge } from '../ui/badge';
 
 export default function ColdStorageFinder() {
   const [location, setLocation] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isFetchingLocation, setIsFetchingLocation] = useState(false);
   const [result, setResult] = useState<FindColdStorageOutput | null>(null);
   const { toast } = useToast();
+
+  const handleLocationFetch = () => {
+    setIsFetchingLocation(true);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          try {
+            const { latitude, longitude } = position.coords;
+            const { location } = await getLocationFromCoords({ latitude, longitude });
+            setLocation(location);
+          } catch (error) {
+            console.error(error);
+            toast({
+              title: 'Error',
+              description: 'Could not determine your location. Please enter it manually.',
+              variant: 'destructive',
+            });
+          } finally {
+            setIsFetchingLocation(false);
+          }
+        },
+        (error) => {
+          console.error(error);
+          toast({
+            title: 'Location Access Denied',
+            description: 'Please enable location access in your browser settings.',
+            variant: 'destructive',
+          });
+          setIsFetchingLocation(false);
+        }
+      );
+    } else {
+       toast({
+        title: 'Geolocation Not Supported',
+        description: 'Your browser does not support geolocation.',
+        variant: 'destructive',
+      });
+      setIsFetchingLocation(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,7 +89,8 @@ export default function ColdStorageFinder() {
       console.error(error);
       toast({
         title: 'Error',
-        description: 'Could not find cold storage facilities. Please try again.',
+        description:
+          'Could not find cold storage facilities. Please try again.',
         variant: 'destructive',
       });
     } finally {
@@ -68,9 +118,20 @@ export default function ColdStorageFinder() {
               onChange={(e) => setLocation(e.target.value)}
               placeholder="Enter your city or district..."
               className="pl-10"
+              disabled={isFetchingLocation}
             />
           </div>
-          <Button type="submit" disabled={loading}>
+           <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            onClick={handleLocationFetch}
+            disabled={isFetchingLocation}
+            aria-label="Use current location"
+          >
+            {isFetchingLocation ? <Loader2 className="animate-spin" /> : <Crosshair />}
+          </Button>
+          <Button type="submit" disabled={loading || isFetchingLocation}>
             {loading ? <Loader2 className="animate-spin" /> : <Sparkles />}
             Find
           </Button>
@@ -99,9 +160,13 @@ export default function ColdStorageFinder() {
                     <Phone className="h-4 w-4 text-muted-foreground" />
                     <span>{facility.contact}</span>
                   </div>
-                   <div className="flex flex-wrap gap-2 pt-2">
-                    {facility.suitableFor.map(item => <Badge key={item} variant="secondary">{item}</Badge>)}
-                   </div>
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {facility.suitableFor.map((item) => (
+                      <Badge key={item} variant="secondary">
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             ))}
