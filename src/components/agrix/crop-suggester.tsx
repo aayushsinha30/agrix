@@ -1,10 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  suggestCropsProfit,
-  SuggestCropsProfitOutput,
-} from '@/ai/flows/suggest-crops-profit';
+import { suggestCropsProfit } from '@/ai/flows/suggest-crops-profit';
+import type { SuggestCropsProfitOutput } from '@/ai/flows/suggest-crops-profit.types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

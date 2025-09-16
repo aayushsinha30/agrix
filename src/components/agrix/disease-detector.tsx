@@ -1,10 +1,8 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import {
-  detectCropDisease,
-  DetectCropDiseaseOutput,
-} from '@/ai/flows/detect-crop-disease';
+import { detectCropDisease } from '@/ai/flows/detect-crop-disease';
+import type { DetectCropDiseaseOutput } from '@/ai/flows/detect-crop-disease.types';
 import {
   Card,
   CardContent,

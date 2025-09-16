@@ -4,42 +4,14 @@
  * @fileOverview Generates placeholder community content for the AGRIX app.
  *
  * - generateCommunityContent - A function that creates realistic community posts.
- * - GenerateCommunityContentOutput - The return type for the function.
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+import {
+  GenerateCommunityContentOutputSchema,
+  type GenerateCommunityContentOutput,
+} from './generate-community-content.types';
 
-const CommunityPostSchema = z.object({
-  author: z.string().describe("The name of the farmer posting the content."),
-  time: z.string().describe("A relative time string, e.g., '2 hours ago'."),
-  content: z
-    .string()
-    .describe(
-      "The text content of the post. Should be a question, a tip, or a general comment related to farming in Chhattisgarh."
-    ),
-  likes: z
-    .number()
-    .int()
-    .min(0)
-    .describe("A random number of likes for the post."),
-  comments: z
-    .number()
-    .int()
-    .min(0)
-    .describe("A random number of comments on the post."),
-});
-
-const GenerateCommunityContentOutputSchema = z.object({
-  posts: z
-    .array(CommunityPostSchema)
-    .length(5)
-    .describe('An array of 5 community posts.'),
-});
-
-export type GenerateCommunityContentOutput = z.infer<
-  typeof GenerateCommunityContentOutputSchema
->;
 
 export async function generateCommunityContent(): Promise<GenerateCommunityContentOutput> {
   return generateCommunityContentFlow();
