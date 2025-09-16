@@ -14,3 +14,4 @@ import './flows/assess-crop-damage.ts';
 import './flows/find-farming-supplies.ts';
 import './flows/find-cold-storage.ts';
 import './flows/get-location-from-coords.ts';
+import './flows/get-profit-improvement-advice.ts';

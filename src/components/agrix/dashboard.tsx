@@ -26,6 +26,7 @@ import {
   Shield,
   ShoppingBag,
   Snowflake,
+  DollarSign,
 } from 'lucide-react';
 import PricePredictor from './price-predictor';
 import Community from './community';
@@ -38,6 +39,7 @@ import SmartInsurance from './smart-insurance';
 import ValueAddition from './value-addition';
 import Shop from './shop';
 import ColdStorageFinder from './cold-storage-finder';
+import ProfitLossTracker from './profit-loss-tracker';
 
 const LandscapeBackground = () => (
   <div
@@ -76,12 +78,15 @@ export default function AgrixDashboard() {
       <Header />
       <main className="p-4 md:p-6 lg:p-8">
         <Tabs defaultValue="dashboard">
-          <TabsList className="mb-4 grid-cols-5">
+          <TabsList className="mb-4 grid-cols-6">
             <TabsTrigger value="dashboard">
               <LayoutGrid className="mr-2" /> Dashboard
             </TabsTrigger>
             <TabsTrigger value="markets">
               <Activity className="mr-2" /> Markets
+            </TabsTrigger>
+            <TabsTrigger value="finance">
+              <DollarSign className="mr-2" /> Finance
             </TabsTrigger>
             <TabsTrigger value="services">
               <Tractor className="mr-2" /> Farm Services
@@ -112,6 +117,9 @@ export default function AgrixDashboard() {
               <MarketPrices />
               <PricePredictor />
             </div>
+          </TabsContent>
+          <TabsContent value="finance">
+            <ProfitLossTracker />
           </TabsContent>
           <TabsContent value="services">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
