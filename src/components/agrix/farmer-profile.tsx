@@ -97,7 +97,7 @@ export default function FarmerProfile({
                 <FormItem>
                   <FormLabel>Location</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Central Valley, CA" {...field} />
+                    <Input placeholder="e.g., Chhattisgarh" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -138,7 +138,7 @@ export default function FarmerProfile({
                 <FormItem>
                   <FormLabel>Main Crops (comma-separated)</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Corn, Wheat" {...field} />
+                    <Input placeholder="e.g., Rice, Wheat" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

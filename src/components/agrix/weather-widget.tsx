@@ -4,6 +4,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  CardDescription
 } from '@/components/ui/card';
 import { ThermometerSun } from 'lucide-react';
 import { Separator } from '../ui/separator';
@@ -17,8 +18,11 @@ export default function WeatherWidget() {
       <CardHeader>
         <div className="flex items-center gap-3">
           <ThermometerSun className="h-6 w-6 text-primary" />
-          <CardTitle className="font-headline">Weather</CardTitle>
+          <CardTitle className="font-headline">Weather Forecasting</CardTitle>
         </div>
+         <CardDescription>
+          AI-powered weather predictions for better planning.
+        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between gap-4">

@@ -25,3 +25,13 @@ export type WeatherInfo = {
     icon: React.ComponentType<{ className?: string }>;
   }[];
 };
+
+export type CommunityPost = {
+  id: string;
+  author: string;
+  avatar: string;
+  time: string;
+  content: string;
+  likes: number;
+  comments: number;
+};

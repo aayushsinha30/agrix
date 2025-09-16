@@ -87,7 +87,7 @@ export default function DiseaseDetector() {
       <CardHeader>
         <div className="flex items-center gap-3">
           <Stethoscope className="h-6 w-6 text-primary" />
-          <CardTitle className="font-headline">Disease Detection</CardTitle>
+          <CardTitle className="font-headline">Pest & Disease Detection</CardTitle>
         </div>
         <CardDescription>
           Upload a photo of a crop to detect diseases and get treatment advice.

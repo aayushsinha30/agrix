@@ -10,20 +10,20 @@ import {
 } from 'lucide-react';
 
 export const mockMarketPrices: MarketPrice[] = [
-  { crop: 'Wheat', price: 250, change: 2.5, icon: Wheat },
-  { crop: 'Corn', price: 180, change: -1.2, icon: Sprout },
-  { crop: 'Apples', price: 150, change: 5.1, icon: Apple },
-  { crop: 'Carrots', price: 80, change: -3.4, icon: Carrot },
+  { crop: 'Rice', price: 2203, change: 1.5, icon: Sprout },
+  { crop: 'Wheat', price: 2700, change: -0.8, icon: Wheat },
+  { crop: 'Corn', price: 2150, change: 2.1, icon: Sprout },
+  { crop: 'Gram', price: 6500, change: -2.4, icon: Carrot },
 ];
 
 export const mockWeather: WeatherInfo = {
-  location: 'Green Valley',
-  temperature: 24,
-  condition: 'Sunny',
-  icon: Sun,
+  location: 'Raipur, Chhattisgarh',
+  temperature: 32,
+  condition: 'Partly Cloudy',
+  icon: Cloud,
   forecast: [
-    { day: 'Tue', temp: 26, icon: Sun },
-    { day: 'Wed', temp: 22, icon: Cloud },
-    { day: 'Thu', temp: 19, icon: CloudRain },
+    { day: 'Tue', temp: 34, icon: Sun },
+    { day: 'Wed', temp: 33, icon: Cloud },
+    { day: 'Thu', temp: 28, icon: CloudRain },
   ],
 };

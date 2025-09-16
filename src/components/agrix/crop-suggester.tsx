@@ -59,7 +59,7 @@ export default function CropSuggester({ farmerProfile }: CropSuggesterProps) {
       <CardHeader>
         <div className="flex items-center gap-3">
           <Lightbulb className="h-6 w-6 text-primary" />
-          <CardTitle className="font-headline">Smart Crop Suggestion</CardTitle>
+          <CardTitle className="font-headline">Smart Crop Selection</CardTitle>
         </div>
       </CardHeader>
       <CardContent>

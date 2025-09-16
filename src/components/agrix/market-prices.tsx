@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { DollarSign, ArrowUp, ArrowDown } from 'lucide-react';
+import { Activity, ArrowUp, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function MarketPrices() {
@@ -22,11 +22,11 @@ export default function MarketPrices() {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-3">
-          <DollarSign className="h-6 w-6 text-primary" />
-          <CardTitle className="font-headline">Market Prices</CardTitle>
+          <Activity className="h-6 w-6 text-primary" />
+          <CardTitle className="font-headline">Live Market Prices</CardTitle>
         </div>
         <CardDescription>
-          Live market prices for your main crops.
+          Live mandi prices for your main crops.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -34,7 +34,7 @@ export default function MarketPrices() {
           <TableHeader>
             <TableRow>
               <TableHead>Crop</TableHead>
-              <TableHead className="text-right">Price (USD/ton)</TableHead>
+              <TableHead className="text-right">Price (₹/quintal)</TableHead>
               <TableHead className="text-right">Change</TableHead>
             </TableRow>
           </TableHeader>
@@ -50,7 +50,7 @@ export default function MarketPrices() {
                     </div>
                   </TableCell>
                   <TableCell className="text-right font-semibold">
-                    ${item.price.toFixed(2)}
+                    ₹{item.price.toFixed(2)}
                   </TableCell>
                   <TableCell
                     className={cn(

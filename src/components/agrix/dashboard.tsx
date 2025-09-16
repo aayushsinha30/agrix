@@ -8,6 +8,20 @@ import WeatherWidget from './weather-widget';
 import MarketPrices from './market-prices';
 import CropSuggester from './crop-suggester';
 import DiseaseDetector from './disease-detector';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import {
+  Activity,
+  Banknote,
+  Droplets,
+  HeartPulse,
+  LayoutGrid,
+  MessagesSquare,
+  ShieldCheck,
+  Tractor,
+} from 'lucide-react';
+import PricePredictor from './price-predictor';
+import Community from './community';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 
 const LandscapeBackground = () => (
   <div
@@ -31,31 +45,114 @@ const LandscapeBackground = () => (
   </div>
 );
 
+const PlaceholderCard = ({
+  title,
+  icon,
+}: {
+  title: string;
+  icon: React.ReactNode;
+}) => (
+  <Card>
+    <CardHeader>
+      <div className="flex items-center gap-3">
+        {icon}
+        <CardTitle>{title}</CardTitle>
+      </div>
+      <CardDescription>
+        This feature is under construction. Check back soon!
+      </CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div className="flex items-center justify-center h-32 text-muted-foreground">
+        Coming Soon
+      </div>
+    </CardContent>
+  </Card>
+);
+
 export default function AgrixDashboard() {
   const [profile, setProfile] = useState<FarmerProfileType>({
     name: 'Alex Farmer',
-    location: 'Green Valley',
+    location: 'Chhattisgarh',
     farmSize: 50,
     soilType: 'Loamy',
-    mainCrops: ['Corn', 'Wheat'],
+    mainCrops: ['Rice', 'Wheat'],
     languagePreference: 'English',
   });
 
   return (
     <div className="min-h-screen bg-background text-foreground relative isolate">
       <Header />
-      <main className="p-4 md:p-6 lg:p-8 space-y-6 md:space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          <div className="lg:col-span-1 flex flex-col gap-6 md:gap-8">
-            <FarmerProfile profile={profile} onUpdate={setProfile} />
-            <WeatherWidget />
-          </div>
-          <div className="lg:col-span-2 flex flex-col gap-6 md:gap-8">
-            <MarketPrices />
-            <CropSuggester farmerProfile={profile} />
-          </div>
-        </div>
-        <DiseaseDetector />
+      <main className="p-4 md:p-6 lg:p-8">
+        <Tabs defaultValue="dashboard">
+          <TabsList className="mb-4 grid-cols-4">
+            <TabsTrigger value="dashboard">
+              <LayoutGrid className="mr-2" /> Dashboard
+            </TabsTrigger>
+            <TabsTrigger value="markets">
+              <Activity className="mr-2" /> Markets
+            </TabsTrigger>
+            <TabsTrigger value="services">
+              <Tractor className="mr-2" /> Farm Services
+            </TabsTrigger>
+            <TabsTrigger value="community">
+              <MessagesSquare className="mr-2" /> Community
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="dashboard">
+            <div className="space-y-6 md:space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+                <div className="lg:col-span-1 flex flex-col gap-6 md:gap-8">
+                  <FarmerProfile profile={profile} onUpdate={setProfile} />
+                  <WeatherWidget />
+                </div>
+                <div className="lg:col-span-2 flex flex-col gap-6 md:gap-8">
+                  <CropSuggester farmerProfile={profile} />
+                  <DiseaseDetector />
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          <TabsContent value="markets">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+              <MarketPrices />
+              <PricePredictor />
+              <div className="lg:col-span-2">
+                <PlaceholderCard
+                  title="Direct Market Linkage"
+                  icon={<Banknote className="h-6 w-6 text-primary" />}
+                />
+              </div>
+            </div>
+          </TabsContent>
+          <TabsContent value="services">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              <PlaceholderCard
+                title="Precision Irrigation"
+                icon={<Droplets className="h-6 w-6 text-primary" />}
+              />
+              <PlaceholderCard
+                title="Post-Harvest Sorting"
+                icon={<Tractor className="h-6 w-6 text-primary" />}
+              />
+              <PlaceholderCard
+                title="Livestock Management"
+                icon={<HeartPulse className="h-6 w-6 text-primary" />}
+              />
+              <PlaceholderCard
+                title="Smart Insurance & Loans"
+                icon={<ShieldCheck className="h-6 w-6 text-primary" />}
+              />
+              <PlaceholderCard
+                title="Value Addition Support"
+                icon={<Tractor className="h-6 w-6 text-primary" />}
+              />
+            </div>
+          </TabsContent>
+          <TabsContent value="community">
+            <Community />
+          </TabsContent>
+        </Tabs>
       </main>
       <LandscapeBackground />
     </div>
