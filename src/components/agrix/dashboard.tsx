@@ -23,7 +23,7 @@ import {
   Boxes,
   CookingPot,
   Beef,
-  ShieldHalf,
+  Shield,
 } from 'lucide-react';
 import PricePredictor from './price-predictor';
 import Community from './community';
