@@ -11,22 +11,11 @@ import DiseaseDetector from './disease-detector';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import {
   Activity,
-  Banknote,
-  Bug,
-  Droplets,
-  Landmark,
-  HeartPulse,
+  DollarSign,
   LayoutGrid,
   MessagesSquare,
-  ShieldCheck,
-  Tractor,
-  Boxes,
-  CookingPot,
-  Beef,
-  Shield,
   ShoppingBag,
-  Snowflake,
-  DollarSign,
+  Tractor,
 } from 'lucide-react';
 import PricePredictor from './price-predictor';
 import Community from './community';
@@ -78,7 +67,7 @@ export default function AgrixDashboard() {
       <Header />
       <main className="p-4 md:p-6 lg:p-8">
         <Tabs defaultValue="dashboard">
-          <TabsList className="mb-4 grid-cols-6">
+          <TabsList className="mb-4">
             <TabsTrigger value="dashboard">
               <LayoutGrid className="mr-2" /> Dashboard
             </TabsTrigger>
