@@ -67,7 +67,7 @@ export default function AgrixDashboard() {
       <Header />
       <main className="p-4 md:p-6 lg:p-8">
         <Tabs defaultValue="dashboard">
-          <TabsList className="mb-4">
+          <TabsList className="mb-4 flex-wrap">
             <TabsTrigger value="dashboard">
               <LayoutGrid className="mr-2" /> Dashboard
             </TabsTrigger>
