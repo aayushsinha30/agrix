@@ -29,6 +29,7 @@ import ValueAddition from './value-addition';
 import Shop from './shop';
 import ColdStorageFinder from './cold-storage-finder';
 import ProfitLossTracker from './profit-loss-tracker';
+import SoilAnalysisRecommender from './soil-analysis-recommender';
 
 const LandscapeBackground = () => (
   <div
@@ -67,7 +68,7 @@ export default function AgrixDashboard() {
       <Header />
       <main className="p-4 md:p-6 lg:p-8">
         <Tabs defaultValue="dashboard">
-          <TabsList className="mb-4 flex-wrap">
+          <TabsList className="mb-4 flex flex-wrap h-auto justify-start md:flex-nowrap md:h-10">
             <TabsTrigger value="dashboard">
               <LayoutGrid className="mr-2" /> Dashboard
             </TabsTrigger>
@@ -95,6 +96,7 @@ export default function AgrixDashboard() {
                   <WeatherWidget />
                 </div>
                 <div className="lg:col-span-2 flex flex-col gap-6 md:gap-8">
+                  <SoilAnalysisRecommender />
                   <CropSuggester farmerProfile={profile} />
                   <DiseaseDetector />
                 </div>

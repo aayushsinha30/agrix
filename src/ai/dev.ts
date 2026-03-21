@@ -1,3 +1,4 @@
+'use server';
 import { config } from 'dotenv';
 config();
 
@@ -15,3 +16,4 @@ import './flows/find-farming-supplies.ts';
 import './flows/find-cold-storage.ts';
 import './flows/get-location-from-coords.ts';
 import './flows/get-profit-improvement-advice.ts';
+import './flows/get-soil-based-recommendations.ts';
